@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheBurgerBoard | Ultra Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">TBB</div>
+        <div>
+          <p class="eyebrow">TheBurgerBoard</p>
+          <p class="tag">Ultra premium fast food experience</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#experience">Experience</a>
+        <a href="#testimonials">Reviews</a>
+      </nav>
+      <a class="button button-primary" href="#reserve">Reserve</a>
+    </header>
+
+    <main>
+      <section class="hero split" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Welcome to</p>
+          <h1>TheBurgerBoard</h1>
+          <p class="hero-text">A premium fast food destination for burgers, pizza, shawarma and elevated comfort food. Tap any image to upload your own visuals without touching code.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#menu">Explore Menu</a>
+            <a class="button button-secondary" href="#experience">Our Story</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>24/7</strong><span>Crafted service</span></div>
+            <div><strong>500+</strong><span>Five-star reviews</span></div>
+            <div><strong>100%</strong><span>Fresh sourcing</span></div>
+          </div>
+        </div>
+        <div class="hero-visual image-uploader" data-image-key="hero-visual">
+          <img class="editable-image" src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80" alt="Premium burger" />
+          <div class="image-label">Click to replace image</div>
+          <input class="image-input" type="file" accept="image/*" />
+        </div>
+      </section>
+
+      <section class="section section-feature" id="experience">
+        <div class="section-heading">
+          <p class="eyebrow">Experience</p>
+          <h2>Modern gourmet fast food with confident style.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3>Signature Burgers</h3>
+            <p>Hand-pressed patties, toasted buns, and perfectly melted cheese in every bite.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🍕</div>
+            <h3>Stone-Baked Pizza</h3>
+            <p>Wood-fired crust, premium toppings, and a golden finish that feels authentic.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🥙</div>
+            <h3>Fresh Shawarma</h3>
+            <p>Warm wraps layered with savory meat, crisp greens, and house sauces made daily.</p>
+      </section>
+
+      <section class="section section-menu" id="menu">
+        <div class="section-heading">
+          <p class="eyebrow">Menu</p>
+          <h2>Signature selections ready to savor.</h2>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card image-uploader" data-image-key="menu-1">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="Classic burger" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="menu-copy">
+              <h3>Classic Board</h3>
+              <p>Double patty, signature sauce, aged cheddar, crisp onions and smoky bacon.</p>
+              <span>$24</span>
+            </div>
+          </article>
+
+          <article class="menu-card image-uploader" data-image-key="menu-2">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=700&q=80" alt="Gourmet pizza" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="menu-copy">
+              <h3>Pizza Board</h3>
+              <p>Stone-baked crust, blistered mozzarella, spicy pepperoni, and roasted rosemary.</p>
+              <span>$26</span>
+            </div>
+          </article>
+
+          <article class="menu-card image-uploader" data-image-key="menu-3">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=80" alt="Shawarma wrap" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="menu-copy">
+              <h3>Shawarma Street</h3>
+              <p>Seasoned chicken and lamb shawarma, crisp salad, tahini, and warm flatbread.</p>
+              <span>$28</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Style</p>
+          <h2>Visual storytelling made editable.</h2>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-tile image-uploader" data-image-key="gallery-1">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1543332164-3a55aa352b8c?auto=format&fit=crop&w=900&q=80" alt="Burger platter" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+          <article class="gallery-tile image-uploader" data-image-key="gallery-2">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1548365328-5b332fcf8b6d?auto=format&fit=crop&w=900&q=80" alt="Pizza with toppings" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+          <article class="gallery-tile image-uploader" data-image-key="gallery-3">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80" alt="Shawarma wrap" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+          <article class="gallery-tile image-uploader" data-image-key="gallery-4">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80" alt="Burger close-up" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+          <article class="gallery-tile image-uploader" data-image-key="gallery-5">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80" alt="Loaded fries" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+          <article class="gallery-tile image-uploader" data-image-key="gallery-6">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1601924638867-3ec8c2f0b11c?auto=format&fit=crop&w=900&q=80" alt="Chef plating food" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+          <article class="gallery-tile image-uploader" data-image-key="gallery-7">
+            <img class="editable-image" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Food presentation" />
+            <input class="image-input" type="file" accept="image/*" />
+            <div class="tile-label">Tap to replace</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-testimonials" id="testimonials">
+        <div class="section-heading">
+          <p class="eyebrow">Reviews</p>
+          <h2>Why guests keep coming back.</h2>
+        </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <p>"TheBurgerBoard feels like a luxury dining destination without losing the comfort of a classic burger joint."</p>
+            <div class="testimonial-author">
+              <strong>Jorge M.</strong>
+              <span>Food critic</span>
+            </div>
+          </article>
+          <article class="testimonial-card">
+            <p>"Everything here is crafted to look premium and taste incredible. The visuals are stunning and easy to personalize."</p>
+            <div class="testimonial-author">
+              <strong>Ava L.</strong>
+              <span>Lifestyle editor</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta-section" id="reserve">
+        <div class="cta-shell">
+          <div>
+            <p class="eyebrow">Ready to launch</p>
+            <h2>Build your branded fast food experience.</h2>
+            <p>Click any image to upload your own photography. All visuals update instantly with no code changes required.</p>
+          </div>
+          <a class="button button-primary" href="mailto:hello@theburgerboard.com">Book a branded demo</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>TheBurgerBoard — Ultra premium burger, pizza, and shawarma brand experience.</div>
+      <div>Images editable on click. Built with modern web UI and local image storage.</div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
