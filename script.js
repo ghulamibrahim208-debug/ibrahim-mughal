@@ -1,13 +1,24 @@
 const uploadWrappers = document.querySelectorAll('.image-uploader');
+const PASSWORD = '12345678';
+const imageDefaults = new Map();
+
+function verifyPassword() {
+  const entered = prompt('Enter uploader password (12345678):');
+  if (entered === null) return false;
+  if (entered === PASSWORD) return true;
+  alert('Incorrect password.');
+  return false;
+}
 
 function loadSavedImages() {
   uploadWrappers.forEach(wrapper => {
     const key = wrapper.dataset.imageKey;
-    if (!key) return;
+    const img = wrapper.querySelector('img.editable-image');
+    if (!key || !img) return;
+    imageDefaults.set(key, img.src);
     const saved = localStorage.getItem(`theburgerboard-image-${key}`);
     if (saved) {
-      const img = wrapper.querySelector('img.editable-image');
-      if (img) img.src = saved;
+      img.src = saved;
     }
   });
 }
@@ -36,9 +47,36 @@ function bindImageUploaders() {
     const img = wrapper.querySelector('img.editable-image');
     if (!input || !img) return;
 
-    wrapper.addEventListener('click', () => input.click());
-    input.addEventListener('click', event => event.stopPropagation());
-    input.addEventListener('change', handleInputChange);
+    const resetButton = document.createElement('button');
+    resetButton.type = 'button';
+    resetButton.className = 'image-reset-button';
+    resetButton.textContent = 'Reset';
+    wrapper.appendChild(resetButton);
+
+    wrapper.addEventListener('click', () => {
+      if (!verifyPassword()) return;
+      input.dataset.authorized = 'true';
+      input.click();
+    });
+
+    input.addEventListener('change', event => {
+      if (input.dataset.authorized !== 'true') {
+        input.value = '';
+        return;
+      }
+      delete input.dataset.authorized;
+      handleInputChange(event);
+    });
+
+    resetButton.addEventListener('click', event => {
+      event.stopPropagation();
+      if (!verifyPassword()) return;
+      const key = wrapper.dataset.imageKey;
+      const defaultSrc = imageDefaults.get(key) || img.src;
+      img.src = defaultSrc;
+      localStorage.removeItem(`theburgerboard-image-${key}`);
+      input.value = '';
+    });
   });
 }
 
