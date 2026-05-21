@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FashionHub</title>
+    <style>
+        :root {
+            --bg: #090b17;
+            --panel: rgba(255,255,255,0.07);
+            --text: #f4f6fb;
+            --muted: #9aa2b8;
+            --accent: #ff6b35;
+            --accent-soft: rgba(255,107,53,0.16);
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Arial', sans-serif; background: radial-gradient(circle at top, #151b35 0%, #090b17 62%); color: var(--text); }
+        html { scroll-behavior: smooth; }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(9,11,23,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px); }
+        .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 0; }
+        .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; }
+        .brand-mark { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #ff6b35 0%, #ff8f5b 100%); color: #fff; font-size: 22px; font-weight: 900; }
+        .brand-text { font-size: 18px; font-weight: 800; letter-spacing: 0.02em; }
+        .main-nav { display: flex; align-items: center; gap: 26px; }
+        .main-nav a { color: rgba(244,246,251,0.8); text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
+        .main-nav a:hover { color: #ff8f8c; }
+        .main-nav .active { color: #fff; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .header-actions button { border-radius: 999px; padding: 12px 18px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: var(--text); font-weight: 700; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+        .header-actions button:hover { transform: translateY(-1px); background: rgba(255,255,255,0.08); }
+        .btn-outline { color: #fff; }
+        .call-button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #f8fafc; font-weight: 700; text-decoration: none; box-shadow: 0 18px 44px rgba(16, 185, 129, 0.22); transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+        .call-button:hover { transform: translateY(-2px); background: linear-gradient(135deg, #0f766e 0%, #047857 100%); box-shadow: 0 24px 56px rgba(16, 185, 129, 0.28); }
+        .call-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(248,250,252,0.12); color: #f8fafc; font-size: 0.95rem; }
+        .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 40px; min-height: calc(100vh - 96px); padding: 60px 0; }
+        .hero-copy .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+        .hero-copy .eyebrow::before { content: ''; width: 36px; height: 1px; background: rgba(255,255,255,0.2); }
+        .hero-copy h1 { font-size: clamp(3rem, 5vw, 4.5rem); line-height: 0.95; margin: 0 0 24px; }
+        .hero-copy p { margin: 0 0 32px; color: var(--muted); font-size: 1.05rem; line-height: 1.75; max-width: 560px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
+        .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 14px 28px; text-decoration: none; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn-primary { background: linear-gradient(135deg, #ff6b35, #ff8f5b); color: #fff; box-shadow: 0 18px 40px rgba(255,107,53,0.24); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+        .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+        .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+        .stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 22px; padding: 22px; }
+        .stat strong { display: block; font-size: 1.6rem; margin-bottom: 8px; color: #fff; }
+        .stat span { color: var(--muted); font-size: 0.95rem; }
+        .hero-visual { display: grid; place-items: center; }
+        .visual-card { width: min(520px, 100%); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 32px; padding: 34px; box-shadow: 0 36px 95px rgba(0,0,0,0.24); backdrop-filter: blur(18px); }
+        .visual-pill { display: inline-flex; padding: 10px 16px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.82rem; margin-bottom: 24px; }
+        .visual-card h2 { margin: 0 0 18px; font-size: 2.1rem; line-height: 1.05; }
+        .visual-card p { margin: 0 0 24px; color: var(--muted); line-height: 1.8; }
+        .visual-card .card-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; color: #fff; font-weight: 600; }
+        .meta-tag { background: rgba(255,255,255,0.07); padding: 10px 16px; border-radius: 999px; font-size: 0.95rem; }
+        .section { padding: 60px 0; }
+        .section-title { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+        .section-title .eyebrow { margin: 0; }
+        .section-title h2 { margin: 0; font-size: 2.2rem; }
+        .page-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start; }
+        .contact-panel { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 28px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.16); }
+        .contact-panel h2 { margin-top: 0; color: #fff; }
+        .contact-panel p { color: var(--muted); line-height: 1.75; }
+        form { display: grid; gap: 16px; }
+        label { color: #fff; font-weight: 700; }
+        input, textarea { width: 100%; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: #f4f6fb; font-size: 16px; }
+        textarea { min-height: 180px; resize: vertical; }
+        button { padding: 14px 16px; background: linear-gradient(135deg, #ff6b35, #ff8f5b); color: #fff; border: none; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s ease; }
+        button:hover { transform: translateY(-1px); }
+        .contact-info { display: grid; gap: 16px; margin-top: 30px; color: var(--muted); }
+        .contact-info h3 { margin: 0 0 12px; color: #fff; }
+        .contact-info p { margin: 0; }
+        footer { padding: 36px 0; color: var(--muted); text-align: center; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.55); animation: fadeIn 0.3s; }
+        .modal-content { background-color: #0d1130; margin: 10% auto; padding: 24px; border: 1px solid rgba(255,255,255,0.08); width: 90%; max-width: 420px; border-radius: 18px; box-shadow: 0 16px 48px rgba(0,0,0,0.28); }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: #fff; text-decoration: none; cursor: pointer; }
+        @media (max-width: 1080px) { .hero { grid-template-columns: 1fr; } .hero-stats { grid-template-columns: 1fr; } .page-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 760px) { .header-inner { flex-wrap: wrap; justify-content: center; } .main-nav { width: 100%; order: 3; justify-content: center; flex-wrap: wrap; gap: 14px; } .header-actions { width: 100%; justify-content: center; order: 2; } .hero { padding: 40px 0; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">F</div>
+                <div class="brand-text">FashionHub</div>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="men.html">Men</a>
+                <a href="women.html">Women</a>
+                <a href="accessories.html">Accessories</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button onclick="openModal('login')">Login</button>
+                <button class="btn-outline" onclick="openModal('signup')">Sign Up</button>
+                <a class="call-button" href="tel:+1234567890" aria-label="Call FashionHub">
+                    <span class="call-icon">☎</span>
+                    Call now
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow">Contact Us</div>
+                <h1>Get in touch with FashionHub for premium styling support.</h1>
+                <p>Whether you need outfit recommendations, order assistance, or custom styling, our team is ready to help you look your best.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="#contact-form">Send a message</a>
+                    <a class="btn-secondary" href="tel:+1234567890">Call us now</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><strong>Live</strong><span>Chat support</span></div>
+                    <div class="stat"><strong>Quick</strong><span>response</span></div>
+                    <div class="stat"><strong>Trusted</strong><span>by customers</span></div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-card">
+                    <div class="visual-pill">Talk to us</div>
+                    <h2>We make premium fashion easy to access.</h2>
+                    <p>Send us your questions and we’ll help you with styling, sizing, and order details with fast, friendly support.</p>
+                    <div class="card-meta">
+                        <span>Available now</span>
+                        <span class="meta-tag">Support team</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="section-title">
+                <div class="eyebrow">Get in Touch</div>
+                <h2>Send us a message or connect directly.</h2>
+            </div>
+            <div class="page-grid">
+                <div class="contact-panel">
+                    <h2>Send a message</h2>
+                    <form id="contact-form" action="#" method="post">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-panel">
+                    <h2>Contact information</h2>
+                    <div class="contact-info">
+                        <p><strong>Address:</strong> 123 Fashion Street, Style City, SC 12345</p>
+                        <p><strong>Phone:</strong> (123) 456-7890</p>
+                        <p><strong>Email:</strong> info@fashionhub.com</p>
+                        <p><strong>Hours:</strong> Mon - Fri, 9am - 7pm</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 FashionHub. Crafted for premium style.</p>
+    </footer>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login')">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signup')">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function openModal(type) { document.getElementById(type + 'Modal').style.display = 'block'; }
+        function closeModal(type) { document.getElementById(type + 'Modal').style.display = 'none'; }
+        window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = 'none'; } }
+        document.getElementById('loginForm').addEventListener('submit', function(e) { e.preventDefault(); alert('Login successful!'); closeModal('login'); });
+        document.getElementById('signupForm').addEventListener('submit', function(e) { e.preventDefault(); alert('Sign up successful!'); closeModal('signup'); });
+    </script>
+</body>
+</html>

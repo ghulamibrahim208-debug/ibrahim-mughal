@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Subway Surfers</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #333; font-family: Arial, sans-serif; }
+        #game-container { position: relative; width: 300px; height: 100vh; background: #555; margin: auto; border-left: 5px solid #fff; border-right: 5px solid #fff; }
+        .lane { position: absolute; width: 100px; height: 100%; border-right: 1px dashed #777; box-sizing: border-box; }
+        #player { 
+            position: absolute; width: 50px; height: 50px; background: red; 
+            bottom: 50px; left: 25px; transition: left 0.1s; border-radius: 10px;
+        }
+        .obstacle { 
+            position: absolute; width: 60px; height: 60px; background: yellow; 
+            left: 20px; border-radius: 5px; 
+        }
+        #score { position: absolute; top: 20px; left: 10px; color: white; font-size: 20px; }
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <div id="score">Score: 0</div>
+    <div class="lane" style="left: 0;"></div>
+    <div class="lane" style="left: 100px;"></div>
+    <div class="lane" style="left: 200px;"></div>
+    <div id="player"></div>
+</div>
+
+<script>
+    const player = document.getElementById('player');
+    const container = document.getElementById('game-container');
+    let currentLane = 1; // 0: Left, 1: Middle, 2: Right
+    let score = 0;
+
+    // Movement Logic
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "ArrowLeft" && currentLane > 0) currentLane--;
+        if (e.key === "ArrowRight" && currentLane < 2) currentLane++;
+        updatePlayerPosition();
+    });
+
+    function updatePlayerPosition() {
+        player.style.left = (currentLane * 100 + 25) + "px";
+    }
+
+    // Obstacle Creation
+    function createObstacle() {
+        const obs = document.createElement('div');
+        obs.classList.add('obstacle');
+        const lane = Math.floor(Math.random() * 3);
+        obs.style.left = (lane * 100 + 20) + "px";
+        obs.style.top = "-60px";
+        container.appendChild(obs);
+
+        let top = -60;
+        let interval = setInterval(() => {
+            top += 5;
+            obs.style.top = top + "px";
+
+            // Collision Detection (Takrana)
+            if (top > window.innerHeight - 150 && top < window.innerHeight - 50 && lane === currentLane) {
+                alert("Game Over! Score: " + score);
+                score = 0;
+                location.reload();
+            }
+
+            if (top > window.innerHeight) {
+                obs.remove();
+                score++;
+                document.getElementById('score').innerText = "Score: " + score;
+                clearInterval(interval);
+            }
+        }, 20);
+    }
+
+    setInterval(createObstacle, 1500); // Har 1.5 second mein naya obstacle
+</script>
+
+</body>
+</html>

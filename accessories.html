@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories - FashionHub</title>
+    <style>
+        :root {
+            --bg: #090b17;
+            --panel: rgba(255,255,255,0.07);
+            --text: #f4f6fb;
+            --muted: #9aa2b8;
+            --accent: #ff6b35;
+            --accent-soft: rgba(255,107,53,0.16);
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Arial', sans-serif; background: radial-gradient(circle at top, #151b35 0%, #090b17 62%); color: var(--text); }
+        html { scroll-behavior: smooth; }
+        .site-header { position: sticky; top: 0; z-index: 100; background: rgba(9,11,23,0.9); border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px); }
+        .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 0; }
+        .brand { display: inline-flex; align-items: center; gap: 14px; color: var(--text); text-decoration: none; }
+        .brand-mark { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 18px; background: linear-gradient(135deg, #0f172a 0%, #475569 40%, #f59e0b 100%); color: #f8fafc; font-size: 20px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 18px 36px rgba(0,0,0,0.32), inset 0 0 0 1px rgba(255,255,255,0.12); }
+        .brand-text { font-size: 20px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.22); }
+        .main-nav { display: flex; align-items: center; gap: 26px; }
+        .main-nav a { color: rgba(244,246,251,0.8); text-decoration: none; font-weight: 600; transition: color 0.2s ease; }
+        .main-nav a:hover { color: #ff8f8c; }
+        .main-nav .active { color: #fff; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .header-actions button { border-radius: 999px; padding: 12px 18px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: var(--text); font-weight: 700; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; }
+        .header-actions button:hover { transform: translateY(-1px); background: rgba(255,255,255,0.08); }
+        .btn-outline { color: #fff; }
+        .call-button { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #f8fafc; font-weight: 700; text-decoration: none; box-shadow: 0 18px 44px rgba(16, 185, 129, 0.22); transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+        .call-button:hover { transform: translateY(-2px); background: linear-gradient(135deg, #0f766e 0%, #047857 100%); box-shadow: 0 24px 56px rgba(16, 185, 129, 0.28); }
+        .call-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: rgba(248,250,252,0.12); color: #f8fafc; font-size: 0.95rem; }
+        .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 40px; min-height: calc(100vh - 96px); padding: 60px 0; }
+        .hero-copy .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+        .hero-copy .eyebrow::before { content: ''; width: 36px; height: 1px; background: rgba(255,255,255,0.2); }
+        .hero-copy h1 { font-size: clamp(3rem, 5vw, 4.5rem); line-height: 0.95; margin: 0 0 24px; }
+        .hero-copy p { margin: 0 0 32px; color: var(--muted); font-size: 1.05rem; line-height: 1.75; max-width: 560px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
+        .btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 14px 28px; text-decoration: none; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn-primary { background: linear-gradient(135deg, #ff6b35, #ff8f5b); color: #fff; box-shadow: 0 18px 40px rgba(255,107,53,0.24); }
+        .btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.14); }
+        .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
+        .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+        .stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 22px; padding: 22px; }
+        .stat strong { display: block; font-size: 1.6rem; margin-bottom: 8px; color: #fff; }
+        .stat span { color: var(--muted); font-size: 0.95rem; }
+        .hero-visual { display: grid; place-items: center; }
+        .visual-card { width: min(520px, 100%); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 32px; padding: 34px; box-shadow: 0 36px 95px rgba(0,0,0,0.24); backdrop-filter: blur(18px); }
+        .visual-pill { display: inline-flex; padding: 10px 16px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.82rem; margin-bottom: 24px; }
+        .visual-card h2 { margin: 0 0 18px; font-size: 2.1rem; line-height: 1.05; }
+        .visual-card p { margin: 0 0 24px; color: var(--muted); line-height: 1.8; }
+        .visual-card .card-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; color: #fff; font-weight: 600; }
+        .meta-tag { background: rgba(255,255,255,0.07); padding: 10px 16px; border-radius: 999px; font-size: 0.95rem; }
+        .section { padding: 60px 0; }
+        .section-title { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+        .section-title .eyebrow { margin: 0; }
+        .section-title h2 { margin: 0; font-size: 2.2rem; }
+        .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+        .product { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 28px; padding: 24px; box-shadow: 0 18px 50px rgba(0,0,0,0.16); text-align: center; }
+        .product img { width: 100%; height: 220px; object-fit: cover; border-radius: 20px; transition: transform 0.3s ease; }
+        .product img:hover { transform: translateY(-10px); }
+        .editable-image { cursor: pointer; transition: opacity 0.3s ease; }
+        .editable-image:hover { opacity: 0.8; }
+        .product h3 { margin: 18px 0 10px; color: #fff; }
+        .product p { color: var(--muted); margin: 0; }
+        footer { padding: 36px 0; color: var(--muted); text-align: center; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.55); animation: fadeIn 0.3s; }
+        .modal-content { background-color: #0d1130; margin: 10% auto; padding: 24px; border: 1px solid rgba(255,255,255,0.08); width: 90%; max-width: 420px; border-radius: 18px; box-shadow: 0 16px 48px rgba(0,0,0,0.28); }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: #fff; text-decoration: none; cursor: pointer; }
+        form { display: flex; flex-direction: column; }
+        input { margin: 10px 0; padding: 14px 16px; border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; font-size: 16px; background: rgba(255,255,255,0.05); color: #f4f6fb; }
+        input::placeholder { color: rgba(255,255,255,0.45); }
+        button { margin-top: 10px; padding: 14px 16px; background: linear-gradient(135deg, #ff6b35, #ff8f5b); color: #fff; border: none; border-radius: 12px; cursor: pointer; font-size: 16px; font-weight: 700; transition: transform 0.2s ease; }
+        button:hover { transform: translateY(-1px); }
+        @media (max-width: 1080px) { .hero { grid-template-columns: 1fr; } .hero-stats { grid-template-columns: 1fr; } .products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 760px) { .header-inner { flex-wrap: wrap; justify-content: center; } .main-nav { width: 100%; order: 3; justify-content: center; flex-wrap: wrap; gap: 14px; } .header-actions { width: 100%; justify-content: center; order: 2; } .hero { padding: 40px 0; } .product { padding: 20px; } .products { grid-template-columns: 1fr; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">F</div>
+                <div class="brand-text">FashionHub</div>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="men.html">Men</a>
+                <a href="women.html">Women</a>
+                <a class="active" href="accessories.html">Accessories</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button onclick="openModal('login')">Login</button>
+                <button class="btn-outline" onclick="openModal('signup')">Sign Up</button>
+                <a class="call-button" href="tel:+1234567890" aria-label="Call FashionHub">
+                    <span class="call-icon">☎</span>
+                    Call now
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow">Accessories</div>
+                <h1>Complete your look with premium finishing touches.</h1>
+                <p>Shop high-end accessories designed to elevate every outfit with polish, precision, and timeless appeal.</p>
+                <div class="hero-actions">
+                    <a class="btn-primary" href="#collection">Shop Accessories</a>
+                    <a class="btn-secondary" href="contact.html">Ask a Stylist</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><strong>Stylish</strong><span>Curated pieces</span></div>
+                    <div class="stat"><strong>24/7</strong><span>Support</span></div>
+                    <div class="stat"><strong>Fast</strong><span>Delivery</span></div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-card">
+                    <div class="visual-pill">New Accessories</div>
+                    <h2>Signature details for every outfit.</h2>
+                    <p>From watches to handbags, our accessories collection is crafted to bring standout style and effortless luxury.</p>
+                    <div class="card-meta">
+                        <span>Top picks</span>
+                        <span class="meta-tag">Shop now</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="collection">
+            <div class="section-title">
+                <div class="eyebrow">Featured Picks</div>
+                <h2>Designed to elevate every look.</h2>
+            </div>
+            <div class="products">
+                <div class="product editable-card">
+                    <img id="acc-img1" class="product-image editable-image" src="https://via.placeholder.com/400x320/9b59b6/ffffff?text=Handbag" alt="Designer Handbag">
+                    <h3>Designer Handbag</h3>
+                    <p>Structured shape with luxe detailing.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img2" class="product-image editable-image" src="https://via.placeholder.com/400x320/e74c3c/ffffff?text=Watch" alt="Luxury Watch">
+                    <h3>Luxury Watch</h3>
+                    <p>Timeless design with a polished finish.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img3" class="product-image editable-image" src="https://via.placeholder.com/400x320/3498db/ffffff?text=Jewelry" alt="Gold Necklace">
+                    <h3>Gold Necklace</h3>
+                    <p>Delicate shine with a modern edge.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img4" class="product-image editable-image" src="https://via.placeholder.com/400x320/27ae60/ffffff?text=Shoes" alt="High Heels">
+                    <h3>High Heels</h3>
+                    <p>Elegant silhouettes for every event.</p>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="upcoming">
+            <div class="section-title">
+                <div class="eyebrow">Upcoming Collection</div>
+                <h2>See what’s next for refined accessories.</h2>
+            </div>
+            <div class="products">
+                <div class="product editable-card">
+                    <img id="acc-img5" class="product-image editable-image" src="https://via.placeholder.com/400x320/1abc9c/ffffff?text=Statement+Clutch" alt="Statement Clutch">
+                    <h3>Statement Clutch</h3>
+                    <p>Polished finish and bold metallic accents.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img6" class="product-image editable-image" src="https://via.placeholder.com/400x320/f39c12/ffffff?text=Chain+Necklace" alt="Chain Necklace">
+                    <h3>Chain Necklace</h3>
+                    <p>Modern layering with sculptural form.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img7" class="product-image editable-image" src="https://via.placeholder.com/400x320/8e44ad/ffffff?text=Leather+Belt" alt="Leather Belt">
+                    <h3>Leather Belt</h3>
+                    <p>Clean hardware and superior Italian leather.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img8" class="product-image editable-image" src="https://via.placeholder.com/400x320/2ecc71/ffffff?text=Signature+Watch" alt="Signature Watch">
+                    <h3>Signature Watch</h3>
+                    <p>Precision design with elevated sport styling.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img9" class="product-image editable-image" src="https://via.placeholder.com/400x320/34495e/ffffff?text=Silk+Scarf" alt="Silk Scarf">
+                    <h3>Silk Scarf</h3>
+                    <p>Soft drape with a vibrant seasonal print.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img10" class="product-image editable-image" src="https://via.placeholder.com/400x320/e67e22/ffffff?text=Leather+Wallet" alt="Leather Wallet">
+                    <h3>Leather Wallet</h3>
+                    <p>Slim carry with refined stitching detail.</p>
+                </div>
+                <div class="product editable-card">
+                    <img id="acc-img11" class="product-image editable-image" src="https://via.placeholder.com/400x320/9b59b6/ffffff?text=Travel+Organizer" alt="Travel Organizer">
+                    <h3>Travel Organizer</h3>
+                    <p>Smart compartments for polished packing.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 FashionHub. Crafted for premium style.</p>
+    </footer>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login')">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signup')">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <input type="file" id="imageInput" accept="image/*" style="display:none;">
+    <script>
+        function openModal(type) { document.getElementById(type + 'Modal').style.display = 'block'; }
+        function closeModal(type) { document.getElementById(type + 'Modal').style.display = 'none'; }
+        window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = 'none'; } }
+        document.getElementById('loginForm').addEventListener('submit', function(e) { e.preventDefault(); alert('Login successful!'); closeModal('login'); });
+        document.getElementById('signupForm').addEventListener('submit', function(e) { e.preventDefault(); alert('Sign up successful!'); closeModal('signup'); });
+
+        // Image upload functionality with authentication
+        const imageInput = document.getElementById('imageInput');
+        let currentTargetImg = null;
+
+        function requestImagePassword() {
+            const password = prompt('Enter owner password to edit images:');
+            if (password !== '112234') {
+                alert('Incorrect password.');
+                return false;
+            }
+            return true;
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('editable-image') || e.target.closest('.editable-card')) {
+                if (!requestImagePassword()) return;
+                let card = e.target.closest('.editable-card');
+                let img = card ? card.querySelector('img') : e.target;
+                if (!img) {
+                    img = document.createElement('img');
+                    img.className = 'product-image editable-image';
+                    img.alt = 'New Image';
+                    img.id = 'acc-img' + (document.querySelectorAll('.product img').length + 1);
+                    card.insertBefore(img, card.querySelector('h3'));
+                }
+                currentTargetImg = img;
+                imageInput.click();
+            }
+        });
+
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && currentTargetImg) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const dataURL = event.target.result;
+                    currentTargetImg.src = dataURL;
+                    localStorage.setItem(currentTargetImg.id, dataURL);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Load images from localStorage on page load
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.editable-image').forEach(img => {
+                const stored = localStorage.getItem(img.id);
+                if (stored) {
+                    img.src = stored;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
